@@ -12,15 +12,8 @@
 
         <h1><%= category[0].toUpperCase() + category.substring(1) %></h1>
 
-        <% if (menuItems.length===0) { %>
-            <p>No items found in this category.</p>
-            <% } else { %>
-                <% menuItems.forEach(item=> { %>
-                    <p><% if (item.rating === 5) { %> ⭐ <% } %><strong><%= item.name %></strong> – $<%= item.price %></p>
-                    <p><em><%= item.details %></em></p>
-                    <p>Rating: <%= item.rating %>/5</p>
-                <% }); %>
-            <% } %>
+        <%- include('./partials/menu-list', { menuItems: menuItems }) %>
+        
 </body>
 
 </html>

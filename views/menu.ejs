@@ -16,11 +16,7 @@
         <% let filteredItems = menu.filter(item => item.category === category); %>
         <% if (filteredItems.length > 0) { %>
             <h2><%= category[0].toUpperCase() + category.substring(1) %></h2>
-            <% filteredItems.forEach(item => { %>
-                <p><% if (item.rating === 5) { %> ⭐ <% } %><strong><%= item.name %></strong> – $<%= item.price %></p>
-                <p><em><%= item.details %></em></p>
-                <p>Rating: <%= item.rating %>/5</p>
-            <% }); %>
+            <%- include('./partials/menu-list', { menuItems: filteredItems }) %>
         <% } %>
     <% }); %>
 </body>
