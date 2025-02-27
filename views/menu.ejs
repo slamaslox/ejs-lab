@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu</title>
+</head>
+<body>
+    <%- include('./partials/nav') %>
+
+    <h1>Full Menu</h1>
+
+    <% let categories = ["mains", "sides", "desserts"]; %>
+
+    <% categories.forEach(category => { %>
+        <% let filteredItems = menu.filter(item => item.category === category); %>
+        <% if (filteredItems.length > 0) { %>
+            <h2><%= category[0].toUpperCase() + category.substring(1) %></h2>
+            <% filteredItems.forEach(item => { %>
+                <p><% if (item.rating === 5) { %> ⭐ <% } %><strong><%= item.name %></strong> – $<%= item.price %></p>
+                <p><em><%= item.details %></em></p>
+                <p>Rating: <%= item.rating %>/5</p>
+            <% }); %>
+        <% } %>
+    <% }); %>
+</body>
+
+</html>
